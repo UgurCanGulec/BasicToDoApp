@@ -9,8 +9,14 @@ eventListeners();
 
 function eventListeners(){
 
-    form.addEventListener('submit',addNewItem)
+    //add new item
+    form.addEventListener('submit',addNewItem);
 
+    //delete an item
+    taskList.addEventListener('click',deleteAnItem);
+
+    //deleteAllItems
+    btnDeleteAll.addEventListener('click',deleteAllItems)
 }
 
 function addNewItem(e){
@@ -37,4 +43,30 @@ function addNewItem(e){
     
     e.preventDefault();
 
+}
+
+function deleteAnItem(e){
+    if(e.target.className==='fas fa-times'){
+        if(confirm(e.target.parentElement.parentElement.textContent+" görevi silinecek emin misiniz ?")){
+        e.target.parentElement.parentElement.remove();
+        }else{
+            alert('Silme işlemi iptal edildi.');
+        }
+    }
+
+    e.preventDefault();
+
+}
+
+function deleteAllItems(e){
+    
+    if(confirm('Tüm görevler silinecek, emin misiniz ?')){
+        
+        taskList.innerHTML='';
+
+    }else{
+        alert('Silme işlemi iptal edildi.');
+    }
+
+    
 }
