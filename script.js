@@ -5,7 +5,17 @@ const input=document.querySelector("#txtTaskName");
 const btnDeleteAll=document.querySelector("#btnDeleteAll");
 const taskList=document.querySelector("#task-list");
 
+const items = ['Kitap Oku','Log Dosyalarını Klasörle','BackLoga Bak'];
+
+
+loadItems();
 eventListeners();
+
+function loadItems (){
+    items.forEach(function(item){
+        createNewItem(item);
+    });
+}
 
 function eventListeners(){
 
@@ -19,24 +29,28 @@ function eventListeners(){
     btnDeleteAll.addEventListener('click',deleteAllItems)
 }
 
+function createNewItem(text){
+    //Yeni bir li elementi oluşturacağız.
+    let li=document.createElement('li');
+    li.setAttribute('class','list-group-item list-group-item-secondary');
+    li.innerText=text;
+    // a elememti oluşturulur
+    let a=document.createElement('a');
+    a.setAttribute('href','#');
+    a.setAttribute('class','delete-item float-right');
+    a.innerHTML='<i class="fas fa-times"></i>';
+    li.appendChild(a);
+    //li elementi ul ye atılır.
+    taskList.appendChild(li);
+}
+
 function addNewItem(e){
     
     if(input.value==''){
     alert('Lütfen bir görev giriniz !')
     }
     else{
-        //Yeni bir li elementi oluşturacağız.
-        let li=document.createElement('li');
-        li.setAttribute('class','list-group-item list-group-item-secondary');
-        li.innerText=input.value;
-        // a elememti oluşturulur
-        let a=document.createElement('a');
-        a.setAttribute('href','#');
-        a.setAttribute('class','delete-item float-right');
-        a.innerHTML='<i class="fas fa-times"></i>';
-        li.appendChild(a);
-        //li elementi ul ye atılır.
-        taskList.appendChild(li);
+        createNewItem(input.value);
         input.value='';
     }
 
