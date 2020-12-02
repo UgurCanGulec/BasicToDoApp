@@ -5,16 +5,54 @@ const input=document.querySelector("#txtTaskName");
 const btnDeleteAll=document.querySelector("#btnDeleteAll");
 const taskList=document.querySelector("#task-list");
 
-const items = ['Kitap Oku','Log Dosyalarını Klasörle','BackLoga Bak'];
+var items;
 
 
 loadItems();
 eventListeners();
 
 function loadItems (){
+
+    items=getItemsFromLS();
+
     items.forEach(function(item){
         createNewItem(item);
     });
+}
+
+//lOCAL STORAGEDEN VERİ ALMA
+function getItemsFromLS(){
+    if(localStorage.getItem('items')===null){
+        items=[];
+    }else{
+        items=JSON.parse(localStorage.getItem('items')); 
+    }
+    return items;
+
+
+}
+//LS 'DEKİ TÜM DATALARI SİLME
+
+
+
+//LOCAL STORAGE VERİ ATMA
+function setItemToLS(text){
+    items=getItemsFromLS(); //Kayıt edilmiş listeyi önce al
+    items.push(text);
+    localStorage.setItem('items',JSON.stringify(items)); //köşeli parantezleri ekler 
+}
+//local storage temizleme
+function deleteItemFromLS(text){
+
+    items=getItemsFromLS();
+    items.forEach(function(item,index){
+        if(item===text){
+        items.splice(index,1);
+        }
+    });
+    //Elemanı sildik şimdi listeyi LocalStorage a kaydetmek gerekiyor.
+    localStorage.setItem('items',JSON.stringify(items));
+
 }
 
 function eventListeners(){
@@ -51,7 +89,10 @@ function addNewItem(e){
     }
     else{
         createNewItem(input.value);
+        setItemToLS(input.value);
         input.value='';
+        //local storage a da ekleyelim
+        
     }
 
     
@@ -63,6 +104,7 @@ function deleteAnItem(e){
     if(e.target.className==='fas fa-times'){
         if(confirm(e.target.parentElement.parentElement.textContent+" görevi silinecek emin misiniz ?")){
         e.target.parentElement.parentElement.remove();
+        deleteItemFromLS(e.target.parentElement.parentElement.textContent);
         }else{
             alert('Silme işlemi iptal edildi.');
         }
@@ -76,7 +118,10 @@ function deleteAllItems(e){
     
     if(confirm('Tüm görevler silinecek, emin misiniz ?')){
         
-        taskList.innerHTML='';
+        while(taskList.firstChild){
+            taskList.removeChild(taskList.firstChild);
+        }
+        localStorage.clear();    
 
     }else{
         alert('Silme işlemi iptal edildi.');
