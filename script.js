@@ -20,12 +20,8 @@ function loadItems (){
         createNewItem(item);
     });
 }
-
-<<<<<<< HEAD
+//TEST_EAP BRANCHI
 //lOCAL STORAGEDEN Veri Getirme ve Kullanma
-=======
-//lOCAL STORAGEDEN Veri çekme
->>>>>>> 758352c... Comment was edited
 function getItemsFromLS(){
     if(localStorage.getItem('items')===null){
         items=[];
