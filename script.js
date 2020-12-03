@@ -116,7 +116,7 @@ function deleteAnItem(e){
 
 function deleteAllItems(e){
     
-    if(confirm('Tüm yapılacaklar silinecek, emin misiniz ?')){
+    if(confirm('Tüm görevler silinecek, emin misiniz ?')){
         
         while(taskList.firstChild){
             taskList.removeChild(taskList.firstChild);
