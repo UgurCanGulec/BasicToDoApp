@@ -102,7 +102,7 @@ function addNewItem(e){
 
 function deleteAnItem(e){
     if(e.target.className==='fas fa-times'){
-        if(confirm(e.target.parentElement.parentElement.textContent+" görevi silinecek emin misiniz ?")){
+        if(confirm(e.target.parentElement.parentElement.textContent+" görevini silmek istiyor musunuz ?")){
         e.target.parentElement.parentElement.remove();
         deleteItemFromLS(e.target.parentElement.parentElement.textContent);
         }else{
@@ -116,7 +116,7 @@ function deleteAnItem(e){
 
 function deleteAllItems(e){
     
-    if(confirm('Tüm görevler silinecek, emin misiniz ?')){
+    if(confirm('Tüm yapılacaklar silinecek, emin misiniz ?')){
         
         while(taskList.firstChild){
             taskList.removeChild(taskList.firstChild);
