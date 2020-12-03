@@ -21,7 +21,7 @@ function loadItems (){
     });
 }
 
-//lOCAL STORAGEDEN VERİ ALMA
+//lOCAL STORAGEDEN Veri Getirme ve Kullanma
 function getItemsFromLS(){
     if(localStorage.getItem('items')===null){
         items=[];
