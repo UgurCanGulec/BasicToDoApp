@@ -5,7 +5,8 @@ const input=document.querySelector("#txtTaskName");
 const btnDeleteAll=document.querySelector("#btnDeleteAll");
 const taskList=document.querySelector("#task-list");
 
-var items;
+let items;
+
 
 
 loadItems();
