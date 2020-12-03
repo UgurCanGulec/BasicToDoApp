@@ -20,8 +20,7 @@ function loadItems (){
         createNewItem(item);
     });
 }
-//TEST_EAP BRANCHI
-//lOCAL STORAGEDEN Veri Getirme ve Kullanma
+//lOCAL STORAGEDEN VERİ ÇEKME
 function getItemsFromLS(){
     if(localStorage.getItem('items')===null){
         items=[];
@@ -32,8 +31,6 @@ function getItemsFromLS(){
 
 
 }
-//LS 'DEKİ TÜM VERİLERİ SİLME
-
 
 
 //LOCAL STORAGE VERİ ATMA
