@@ -31,7 +31,7 @@ function getItemsFromLS(){
 
 
 }
-//LS 'DEKİ TÜM DATALARI SİLME
+//LS 'DEKİ TÜM VERİLERİ SİLME
 
 
 
