@@ -48,7 +48,7 @@ function deleteItemFromLS(text){
         items.splice(index,1);
         }
     });
-    //Elemanı sildik şimdi listeyi LocalStorage a kaydetmek gerekiyor.
+    //Elemanı localStorage'dan da silme işlemi için
     localStorage.setItem('items',JSON.stringify(items));
 
 }
